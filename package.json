@@ -1,0 +1,15 @@
+{
+  "name": "net",
+  "version": "1.0.0",
+  "description": "A fully responsive,HHS(Human Health System) website about the muscular system featuring 3D effects, animations, and educational content.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.0.17"
+  }
+}

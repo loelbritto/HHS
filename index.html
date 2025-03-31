@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscular System - HHS(Human Health System)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff4757',
+                        secondary: '#5352ed',
+                        accent: '#ffa502',
+                        dark: '#333',
+                        light: '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- OrbitControls for camera manipulation -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- GLTFLoader for loading 3D models -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="animated-bg">
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+    </div>
+
+    <!-- Intro Pop-up -->
+    <div class="intro-popup" id="introPopup">
+        <div class="intro-content">
+            <div class="logo-container">
+                <i class="fas fa-dna logo-icon"></i>
+                <h1>Muscular System</h1>
+                <p>HHS(Human Health System)</p>
+            </div>
+            <div class="creator-badge">
+                <p>Created by <span class="creator-name">Loel Britto</span></p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page (initially hidden) -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-dna"></i>
+                <span>Muscular System</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="pages/about.html">About</a>
+                <a href="pages/case-study.html">Case Study</a>
+                <a href="pages/additional-case-studies.html">More Studies</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero flex flex-col md:flex-row items-center justify-between py-12 px-5 gap-8 min-h-screen relative overflow-hidden">
+            <div class="hero-text flex-1 z-10">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="block">Exploring</span>
+                    <span class="text-primary">Muscular System</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 max-w-lg">Discover the complex network of tissues responsible for movement, stability, and various bodily functions</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#overview" class="btn btn-primary shadow-lg hover:shadow-xl transition-all duration-300">Learn More</a>
+                    <a href="pages/case-study.html" class="btn btn-secondary shadow-lg hover:shadow-xl transition-all duration-300">Case Studies</a>
+                </div>
+            </div>
+            
+            <!-- 3D Model Container -->
+            <div class="model-container flex-1 h-[600px] bg-white bg-opacity-10 rounded-xl shadow-2xl overflow-hidden relative transition-all duration-500 hover:-translate-y-2">
+                <div class="model-placeholder absolute inset-0 flex flex-col justify-center items-center bg-white bg-opacity-90 z-10 transition-opacity duration-500">
+                    <i class="fas fa-cube text-5xl text-primary mb-4 animate-pulse"></i>
+                    <p class="text-xl font-medium text-center">Human Body Ecorché Model<br>(Loading...)</p>
+                </div>
+                <div id="model-viewer" class="w-full h-full relative">
+                    <div class="sketchfab-embed-wrapper w-full h-full relative rounded-xl overflow-hidden">
+                        <iframe title="Human Body Ecorche" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="100%" height="100%" src="https://sketchfab.com/models/fa2e35ccb4aa40859469ec934815e801/embed?autostart=1&ui_infos=0&ui_watermark=0&ui_help=0&ui_settings=0&ui_inspector=0&ui_annotations=0&ui_color=ff5252">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-shapes absolute inset-0 overflow-hidden -z-10">
+                <div class="shape shape-1 absolute rounded-full opacity-15 blur-3xl"></div>
+                <div class="shape shape-2 absolute rounded-full opacity-15 blur-3xl"></div>
+                <div class="shape shape-3 absolute rounded-full opacity-15 blur-3xl"></div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview py-16 px-5 bg-white" id="overview">
+            <h2 class="section-title text-3xl font-bold text-center mb-12 relative">Overview</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <p class="text-lg">The muscular system is a complex network of tissues responsible for movement, stability, and various bodily functions. It consists of three main types of muscle tissue that work together to maintain the body's posture, generate heat, and facilitate internal functions.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card transform transition-all duration-500 hover:-translate-y-4 hover:shadow-lg">
+                        <div class="text-4xl text-primary mb-4"><i class="fas fa-running"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Skeletal Muscles</h3>
+                        <p>Responsible for voluntary movements and attached to bones.</p>
+                    </div>
+                    <div class="card transform transition-all duration-500 hover:-translate-y-4 hover:shadow-lg">
+                        <div class="text-4xl text-primary mb-4"><i class="fas fa-heartbeat"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Cardiac Muscles</h3>
+                        <p>Found in the heart, enabling continuous pumping of blood.</p>
+                    </div>
+                    <div class="card transform transition-all duration-500 hover:-translate-y-4 hover:shadow-lg">
+                        <div class="text-4xl text-primary mb-4"><i class="fas fa-wind"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Smooth Muscles</h3>
+                        <p>Located in internal organs, controlling involuntary movements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Muscle Mechanism Section -->
+        <section class="mechanism">
+            <h2 class="section-title">Muscle Mechanism</h2>
+            <div class="mechanism-content">
+                <div class="mechanism-steps">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <h3>Excitement</h3>
+                        <p>Signals from your brain prompt muscle activation.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <h3>Action</h3>
+                        <p>Muscles respond by contracting upon receiving the signals.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <h3>Movement</h3>
+                        <p>The contraction of muscles applies force on bones, leading to movement.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <h3>Relaxation</h3>
+                        <p>Following contraction, muscles relax to prepare for the next action.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Functions Section -->
+        <section class="functions">
+            <h2 class="section-title">Functions of the Muscular System</h2>
+            <div class="functions-grid">
+                <div class="function-item">
+                    <i class="fas fa-fire"></i>
+                    <h3>Heat Production</h3>
+                    <p>Muscle contractions generate heat, crucial for regulating body temperature.</p>
+                </div>
+                <div class="function-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Posture and Stability</h3>
+                    <p>Muscles aid in sustaining posture and stabilizing joints.</p>
+                </div>
+                <div class="function-item">
+                    <i class="fas fa-walking"></i>
+                    <h3>Movement</h3>
+                    <p>Skeletal muscles collaborate with the skeletal system to generate voluntary movements.</p>
+                </div>
+                <div class="function-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>Circulation</h3>
+                    <p>Cardiac muscles propel blood, while smooth muscles in blood vessels regulate blood flow and pressure.</p>
+                </div>
+                <div class="function-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Digestion</h3>
+                    <p>Smooth muscles in the digestive tract facilitate the movement of food through the digestive system.</p>
+                </div>
+                <div class="function-item">
+                    <i class="fas fa-lungs"></i>
+                    <h3>Respiration</h3>
+                    <p>The diaphragm and intercostal muscles are pivotal for breathing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-dna"></i>
+                    <h3>Muscular System</h3>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links <span style="font-size: 0.9em; color: #ffa502;"></span> </h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About</a></li>
+                        <li><a href="pages/case-study.html">Case Study</a></li>
+                        <li><a href="pages/additional-case-studies.html">More Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Useful Resources</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Muscular_system?utm_source=chatgpt.com" target="_blank">Muscular System</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Human_anatomy?utm_source=chatgpt.com" target="_blank">Human Anatomy</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Medical_encyclopedia" target="_blank"> Medical Encyclopedia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Muscular System HHS(Human Health System). All rights reserved.</p>
+                <p class="developer-credit">Developed by <span class="developer-name">Loel Britto</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <!-- Script for 3D model -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup for the intro popup
+            setTimeout(function() {
+                document.getElementById('introPopup').style.opacity = '0';
+                document.getElementById('mainContent').style.display = 'block';
+                
+                setTimeout(function() {
+                    document.getElementById('introPopup').style.display = 'none';
+                    document.getElementById('mainContent').style.opacity = '1';
+                }, 500);
+            }, 5000);
+            
+            // Mobile Menu Toggle
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // 3D Model Initialization
+            const modelContainer = document.querySelector('.model-container');
+            const modelViewer = document.getElementById('model-viewer');
+            const modelPlaceholder = document.querySelector('.model-placeholder');
+            
+            if (modelContainer && modelViewer) {
+                console.log('Initializing Sketchfab model viewer');
+                
+                // Hide placeholder after a short delay to ensure model is loaded
+                setTimeout(function() {
+                    if (modelPlaceholder) {
+                        modelPlaceholder.style.opacity = '0';
+                        setTimeout(function() {
+                            modelPlaceholder.style.display = 'none';
+                        }, 500);
+                    }
+                }, 2000);
+                
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    const width = modelContainer.clientWidth;
+                    const height = modelContainer.clientHeight;
+                    
+                    // Adjust iframe size if needed
+                    const iframe = modelViewer.querySelector('iframe');
+                    if (iframe) {
+                        iframe.style.width = width + 'px';
+                        iframe.style.height = height + 'px';
+                    }
+                });
+                
+                console.log('Sketchfab model viewer initialized');
+            }
+        });
+    </script>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggleBtn" class="chatbot-toggle-btn">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbotContainer" class="custom-chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">Muscular System Assistant</div>
+            <div class="chatbot-controls">
+                <button class="chatbot-control-btn" id="minimizeBtn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="chatbot-control-btn" id="closeBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chatbot-iframe-container" id="chatbotIframeContainer">
+            <iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/30/06/20250330063504-UX23BT95.json" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+
+    <!-- Chatbot Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const minimizeBtn = document.getElementById('minimizeBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const iframeContainer = document.getElementById('chatbotIframeContainer');
+            
+            // Toggle chatbot visibility
+            chatbotToggleBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+                if (iframeContainer.classList.contains('chatbot-minimized')) {
+                    iframeContainer.classList.remove('chatbot-minimized');
+                }
+            });
+            
+            // Minimize chatbot
+            minimizeBtn.addEventListener('click', function() {
+                iframeContainer.classList.toggle('chatbot-minimized');
+            });
+            
+            // Close chatbot
+            closeBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = 'none';
+            });
+            
+            // Make chatbot draggable
+            const chatbotHeader = document.querySelector('.chatbot-header');
+            let isDragging = false;
+            let offsetX, offsetY;
+            
+            chatbotHeader.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                offsetX = e.clientX - chatbotContainer.getBoundingClientRect().left;
+                offsetY = e.clientY - chatbotContainer.getBoundingClientRect().top;
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    chatbotContainer.style.left = (e.clientX - offsetX) + 'px';
+                    chatbotContainer.style.top = (e.clientY - offsetY) + 'px';
+                    chatbotContainer.style.right = 'auto';
+                    chatbotContainer.style.bottom = 'auto';
+                }
+            });
+            
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            // Remove branding from iframe after it loads
+            const chatbotIframe = document.querySelector('.chatbot-iframe-container iframe');
+            chatbotIframe.addEventListener('load', function() {
+                try {
+                    const iframeDocument = chatbotIframe.contentDocument || chatbotIframe.contentWindow.document;
+                    const branding = iframeDocument.querySelector('.bp-widget__branding');
+                    if (branding) {
+                        branding.style.display = 'none';
+                    }
+                } catch (err) {
+                    console.log('Could not access iframe content due to same-origin policy');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+  

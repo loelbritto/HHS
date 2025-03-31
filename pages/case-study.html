@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study - Dr. Stephen Hawking | Muscular System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff4757',
+                        secondary: '#5352ed',
+                        accent: '#ffa502',
+                        dark: '#333',
+                        light: '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/case-study.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for Case Study page */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(83, 82, 237, 0.9) 0%, rgba(255, 71, 87, 0.9) 100%);
+            color: white;
+            padding: 100px 5% 50px;
+            text-align: center;
+        }
+
+        .case-study-section {
+            padding: 80px 5%;
+        }
+
+        .case-study-section:nth-child(odd) {
+            background-color: white;
+        }
+
+        .case-study-section:nth-child(even) {
+            background-color: var(--background-color);
+        }
+
+        .case-study-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-image img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            width: 100%;
+        }
+
+        .profile-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .disease-info {
+            margin-top: 50px;
+        }
+
+        .disease-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .disease-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .disease-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .disease-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .engineering-solutions {
+            margin-top: 50px;
+        }
+
+        .solution-timeline {
+            margin-top: 30px;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .solution-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: -40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 5px solid white;
+            box-shadow: 0 0 0 5px rgba(83, 82, 237, 0.3);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 25px;
+            left: -110px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .muscular-dystrophy {
+            margin-top: 50px;
+        }
+
+        .types-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .type-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .type-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .type-name {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .case-example {
+            margin-top: 50px;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .case-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .case-step {
+            padding: 20px;
+            background-color: rgba(83, 82, 237, 0.1);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .case-step:hover {
+            background-color: rgba(83, 82, 237, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .step-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .bioengineering {
+            margin-top: 50px;
+        }
+
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .solution-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.1) 0%, rgba(83, 82, 237, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .profile, .two-column {
+                flex-direction: column;
+            }
+
+            .solution-timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-year {
+                position: relative;
+                left: -20px;
+                top: -20px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="animated-bg">
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-dna"></i>
+                <span>Muscular System</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="case-study.html" class="active">Case Study</a>
+                <a href="additional-case-studies.html">More Studies</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="case-study-hero">
+            <div class="bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="case-study-hero-content">
+                <h1 class="animated-heading">Dr. Stephen Hawking: <span class="highlight">A Case Study</span></h1>
+                <p class="hero-subtitle">Exploring the impact of ALS on the muscular system and the technological solutions that enabled a brilliant mind to continue changing science</p>
+            </div>
+            <div class="scroll-indicator">
+                <p>Scroll to explore</p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="case-intro">
+            <div class="container">
+                <div class="profile-container flex flex-row gap-8 items-start">
+                    <div class="profile-card flex-1 max-w-md">
+                        <div class="profile-card-inner">
+                            <div class="profile-card-front">
+                                <div class="profile-image">
+                                    <img 
+                                        src="../images/stephen-hawking.jpg" 
+                                        data-src="../images/stephen-hawking.jpg, ./images/stephen-hawking.jpg, /images/stephen-hawking.jpg, /c:/Users/loelb/OneDrive/Desktop/net/images/stephen-hawking.jpg" 
+                                        alt="Dr. Stephen Hawking" 
+                                        onerror="
+                                            if (!this.hasAttribute('failureCount')) {
+                                                this.setAttribute('failureCount', 1);
+                                                const paths = this.getAttribute('data-src').split(',');
+                                                const index = parseInt(this.getAttribute('failureCount'));
+                                                if (index < paths.length) {
+                                                    this.src = paths[index].trim();
+                                                    this.setAttribute('failureCount', index + 1);
+                                                } else {
+                                                    this.src='https://via.placeholder.com/800x800?text=Dr.+Stephen+Hawking';
+                                                }
+                                            } else {
+                                                const count = parseInt(this.getAttribute('failureCount'));
+                                                const paths = this.getAttribute('data-src').split(',');
+                                                if (count < paths.length) {
+                                                    this.src = paths[count].trim();
+                                                    this.setAttribute('failureCount', count + 1);
+                                                } else {
+                                                    this.src='https://via.placeholder.com/800x800?text=Dr.+Stephen+Hawking';
+                                                }
+                                            }
+                                        "
+                                        style="object-fit: cover; width: 100%; height: 100%;"
+                                    >
+                                </div>
+                                <div class="profile-info">
+                                    <h2>Dr. Stephen Hawking</h2>
+                                    <p>1942 - 2018</p>
+                                    <div class="profile-tag">Theoretical Physicist</div>
+                                    <p class="profile-hover">Click to learn more</p>
+                                </div>
+                            </div>
+                            <div class="profile-card-back">
+                                <h3>Quick Facts</h3>
+                                <ul class="profile-facts">
+                                    <li><i class="fas fa-graduation-cap"></i> Ph.D. from Cambridge University</li>
+                                    <li><i class="fas fa-book"></i> Author of "A Brief History of Time"</li>
+                                    <li><i class="fas fa-award"></i> Presidential Medal of Freedom</li>
+                                    <li><i class="fas fa-star"></i> Lived with ALS for over 50 years</li>
+                                    <li><i class="fas fa-microscope"></i> Made groundbreaking discoveries about black holes</li>
+                                </ul>
+                                <button class="flip-back-btn">Back to profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-content flex-1">
+                        <div class="content-block appear-animation">
+                            <h3>Who Was Stephen Hawking?</h3>
+                            <p>Stephen Hawking was a brilliant theoretical physicist who became one of the most respected and well-known scientists in the world. Despite being diagnosed with ALS (Amyotrophic Lateral Sclerosis) at the age of 21 and given just two years to live, he defied medical expectations and lived for more than five decades with the condition.</p>
+                            <p>His extraordinary mind and determination led to revolutionary contributions to our understanding of black holes, quantum gravity, and the origins of the universe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALS Impact Section -->
+        <section class="als-impact">
+            <div class="container">
+                <h2 class="section-title">ALS and the Muscular System</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item left appear-animation">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1963</div>
+                            <h3>Diagnosis at Age 21</h3>
+                            <p>While studying at Cambridge University, Hawking was diagnosed with Amyotrophic Lateral Sclerosis (ALS), a neurodegenerative disease affecting motor neurons in the brain and spinal cord.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right appear-animation">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1960s</div>
+                            <h3>Initial Symptoms</h3>
+                            <p>The disease initially caused muscle weakness, affecting Hawking's ability to walk and perform fine motor tasks. These symptoms resulted from the gradual death of motor neurons that control muscle movement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left appear-animation">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1970s</div>
+                            <h3>Progressive Deterioration</h3>
+                            <p>As ALS progressed, muscle atrophy became more pronounced. Hawking began using a wheelchair as his lower limbs lost strength and function due to lack of neural stimulation of muscle fibers.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right appear-animation">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1985</div>
+                            <h3>Loss of Speech</h3>
+                            <p>After developing pneumonia, Hawking underwent a tracheotomy that removed his ability to speak. This procedure was necessary due to weakening respiratory muscles, a common complication of ALS.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left appear-animation">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Later Years</div>
+                            <h3>Almost Complete Paralysis</h3>
+                            <p>In his later years, Hawking had extremely limited muscle function, retaining only the ability to control a small facial muscle and some finger movement. This demonstrates how ALS can affect almost all voluntary muscles over time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technological Solutions Section -->
+        <section class="tech-solutions relative overflow-hidden py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+            <!-- Background animations -->
+            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <!-- Floating particles -->
+                <div class="absolute top-20 left-20 w-16 h-16 rounded-full bg-primary opacity-10 animate-float"></div>
+                <div class="absolute bottom-40 right-40 w-24 h-24 rounded-full bg-secondary opacity-10 animate-float animation-delay-1000"></div>
+                <div class="absolute top-1/2 left-1/3 w-12 h-12 rounded-full bg-accent opacity-10 animate-float animation-delay-2000"></div>
+                
+                <!-- Tech wave patterns -->
+                <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-secondary/5 to-transparent"></div>
+                <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-primary/5 to-transparent"></div>
+                
+                <!-- Circuit patterns -->
+                <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyLjEuOSAyLjEgMi4xdjE5LjhjMCAxLjItLjkgMi4xLTIuMSAyLjFIMjRjLTEuMiAwLTIuMS0uOS0yLjEtMi4xVjIwLjFjMC0xLjIuOS0yLjEgMi4xLTIuMWgxMnpNMjcgNDYuOGMwIC43LS42IDEuMi0xLjIgMS4yaC0zLjZjLS43IDAtMS4yLS42LTEuMi0xLjJ2LTEuNWMwLS43LjYtMS4yIDEuMi0xLjJoMy42Yy43IDAgMS4yLjYgMS4yIDEuMnYxLjV6TTM5IDQ2LjhjMCAuNy0uNiAxLjItMS4yIDEuMmgtMy42Yy0uNyAwLTEuMi0uNi0xLjItMS4ydi0xLjVjMC0uNy42LTEuMiAxLjItMS4yaDMuNmMuNyAwIDEuMi42IDEuMiAxLjJ2MS41ek00OC44IDQwLjJjLjcgMCAxLjIuNiAxLjIgMS4ydjMuNmMwIC43LS42IDEuMi0xLjIgMS4yaC0xLjVjLS43IDAtMS4yLS42LTEuMi0xLjJ2LTMuNmMwLS43LjYtMS4yIDEuMi0xLjJoMS41ek0xMi43IDQwLjJjLjcgMCAxLjIuNiAxLjIgMS4ydjMuNmMwIC43LS42IDEuMi0xLjIgMS4yaC0xLjVjLS43IDAtMS4yLS42LTEuMi0xLjJ2LTMuNmMwLS43LjYtMS4yIDEuMi0xLjJoMS41ek00My41IDEyLjdoMy42Yy43IDAgMS4yLjYgMS4yIDEuMnYxLjVjMCAuNy0uNiAxLjItMS4yIDEuMmgtMy42Yy0uNyAwLTEuMi0uNi0xLjItMS4ydi0xLjVjMC0uNy42LTEuMiAxLjItMS4yek0xMi44IDEyLjdoMy42Yy43IDAgMS4yLjYgMS4yIDEuMnYxLjVjMCAuNy0uNiAxLjItMS4yIDEuMmgtMy42Yy0uNyAwLTEuMi0uNi0xLjItMS4ydi0xLjVjMC0uNy42LTEuMiAxLjItMS4yeiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')]"></div>
+            </div>
+            
+            <div class="relative z-10">
+                <h2 class="section-title mb-16">
+                    <span class="relative inline-block pb-2 text-4xl font-bold">
+                        Technological Solutions
+                        <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
+                    </span>
+                </h2>
+                
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <!-- Speech Synthesizer Card -->
+                        <div class="flip-card-3d-wrapper h-96 lg:h-[400px] select-none perspective">
+                            <div class="flip-card-3d group relative w-full h-full preserve-3d transition-all duration-700 hover:rotate-y-180">
+                                <!-- Front side -->
+                                <div class="flip-card-front absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-xl">
+                                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                                        <div class="w-20 h-20 mb-6 rounded-full bg-primary/10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110">
+                                            <i class="fas fa-microchip text-primary text-3xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold mb-2 text-dark">Speech Synthesizer</h3>
+                                        <p class="text-sm text-gray-500 mt-4">Click to explore</p>
+                                        
+                                        <!-- Decorative elements -->
+                                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full"></div>
+                                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-secondary/5 rounded-tr-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Back side -->
+                                <div class="flip-card-back absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rotate-y-180 p-6">
+                                    <div class="h-full flex flex-col">
+                                        <h3 class="text-xl font-bold mb-4 text-primary border-b border-primary/20 pb-2">Speech Synthesizer</h3>
+                                        <div class="overflow-y-auto flex-grow pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner mb-3">
+                                                <p class="text-gray-700 text-sm md:text-base">After losing his ability to speak, Hawking initially used a hand-held clicker to select words from a card. Later, he was equipped with a computer-based speech synthesizer that could be controlled with minimal muscle movement.</p>
+                                            </div>
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner">
+                                                <p class="text-gray-700 text-sm md:text-base">The iconic voice from this system became synonymous with Hawking's public identity.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Return indicator -->
+                                        <div class="mt-4 flex justify-center items-center text-sm text-gray-500 bg-gray-100 py-2 rounded-lg">
+                                            <i class="fas fa-undo mr-2"></i> Tap to flip back
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Infrared Switch Card -->
+                        <div class="flip-card-3d-wrapper h-96 lg:h-[400px] select-none perspective">
+                            <div class="flip-card-3d group relative w-full h-full preserve-3d transition-all duration-700 hover:rotate-y-180">
+                                <!-- Front side -->
+                                <div class="flip-card-front absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-xl">
+                                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                                        <div class="w-20 h-20 mb-6 rounded-full bg-secondary/10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110">
+                                            <i class="fas fa-eye text-secondary text-3xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold mb-2 text-dark">Infrared Switch & Cheek Sensor</h3>
+                                        <p class="text-sm text-gray-500 mt-4">Click to explore</p>
+                                        
+                                        <!-- Decorative elements -->
+                                        <div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-bl-full"></div>
+                                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-primary/5 rounded-tr-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Back side -->
+                                <div class="flip-card-back absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rotate-y-180 p-6">
+                                    <div class="h-full flex flex-col">
+                                        <h3 class="text-xl font-bold mb-4 text-secondary border-b border-secondary/20 pb-2">Infrared Switch & Cheek Sensor</h3>
+                                        <div class="overflow-y-auto flex-grow pr-2 scrollbar-thin scrollbar-thumb-secondary/20 scrollbar-track-transparent">
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner">
+                                                <p class="text-gray-700 text-sm md:text-base">As Hawking's condition progressed, he adopted an infrared switch mounted on his glasses that detected his cheek movements. This ingenious adaptation allowed him to control his communication system with the only muscle over which he maintained reliable control.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Return indicator -->
+                                        <div class="mt-4 flex justify-center items-center text-sm text-gray-500 bg-gray-100 py-2 rounded-lg">
+                                            <i class="fas fa-undo mr-2"></i> Tap to flip back
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Motorized Wheelchair Card -->
+                        <div class="flip-card-3d-wrapper h-96 lg:h-[400px] select-none perspective">
+                            <div class="flip-card-3d group relative w-full h-full preserve-3d transition-all duration-700 hover:rotate-y-180">
+                                <!-- Front side -->
+                                <div class="flip-card-front absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-xl">
+                                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                                        <div class="w-20 h-20 mb-6 rounded-full bg-accent/10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110">
+                                            <i class="fas fa-wheelchair text-accent text-3xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold mb-2 text-dark">Motorized Wheelchair</h3>
+                                        <p class="text-sm text-gray-500 mt-4">Click to explore</p>
+                                        
+                                        <!-- Decorative elements -->
+                                        <div class="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-full"></div>
+                                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-primary/5 rounded-tr-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Back side -->
+                                <div class="flip-card-back absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rotate-y-180 p-6">
+                                    <div class="h-full flex flex-col">
+                                        <h3 class="text-xl font-bold mb-4 text-accent border-b border-accent/20 pb-2">Motorized Wheelchair</h3>
+                                        <div class="overflow-y-auto flex-grow pr-2 scrollbar-thin scrollbar-thumb-accent/20 scrollbar-track-transparent">
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner mb-3">
+                                                <p class="text-gray-700 text-sm md:text-base">Hawking used a specialized motorized wheelchair that compensated for his lack of muscle control. This wheelchair was custom-built with adaptive technology and upgraded throughout his life to incorporate more advanced features.</p>
+                                            </div>
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner">
+                                                <p class="text-gray-700 text-sm md:text-base">It eventually included integrated computer systems that controlled both his mobility and communication.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Return indicator -->
+                                        <div class="mt-4 flex justify-center items-center text-sm text-gray-500 bg-gray-100 py-2 rounded-lg">
+                                            <i class="fas fa-undo mr-2"></i> Tap to flip back
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Predictive Text Software Card -->
+                        <div class="flip-card-3d-wrapper h-96 lg:h-[400px] select-none perspective">
+                            <div class="flip-card-3d group relative w-full h-full preserve-3d transition-all duration-700 hover:rotate-y-180">
+                                <!-- Front side -->
+                                <div class="flip-card-front absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-xl">
+                                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                                        <div class="w-20 h-20 mb-6 rounded-full bg-primary/10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110">
+                                            <i class="fas fa-brain text-primary text-3xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold mb-2 text-dark">Predictive Text Software</h3>
+                                        <p class="text-sm text-gray-500 mt-4">Click to explore</p>
+                                        
+                                        <!-- Decorative elements -->
+                                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full"></div>
+                                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-secondary/5 rounded-tr-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Back side -->
+                                <div class="flip-card-back absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl rotate-y-180 p-6">
+                                    <div class="h-full flex flex-col">
+                                        <h3 class="text-xl font-bold mb-4 text-primary border-b border-primary/20 pb-2">Predictive Text Software</h3>
+                                        <div class="overflow-y-auto flex-grow pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner mb-3">
+                                                <p class="text-gray-700 text-sm md:text-base">Custom software was developed to enhance Hawking's communication speed. This predictive text system could complete words after just a few characters were selected and learn from his patterns of usage.</p>
+                                            </div>
+                                            <div class="bg-white/50 p-4 rounded-lg shadow-inner">
+                                                <p class="text-gray-700 text-sm md:text-base">With this innovation, Hawking could compose about 15 words per minute, despite having control of only a single muscle.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Return indicator -->
+                                        <div class="mt-4 flex justify-center items-center text-sm text-gray-500 bg-gray-100 py-2 rounded-lg">
+                                            <i class="fas fa-undo mr-2"></i> Tap to flip back
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating animated elements -->
+                    <div class="pointer-events-none">
+                        <div class="absolute top-1/4 left-[10%] animate-float-slow">
+                            <i class="fas fa-microchip text-3xl text-primary opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-1/4 right-[15%] animate-float-slow animation-delay-1000">
+                            <i class="fas fa-cog text-3xl text-secondary opacity-20"></i>
+                        </div>
+                        <div class="absolute top-1/3 right-[20%] animate-float-slow animation-delay-2000">
+                            <i class="fas fa-code text-3xl text-accent opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-1/3 left-[20%] animate-float-slow animation-delay-3000">
+                            <i class="fas fa-wifi text-3xl text-primary opacity-20"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy Section -->
+        <section class="legacy">
+            <div class="container">
+                <h2 class="section-title">Hawking's Legacy</h2>
+                <div class="legacy-content">
+                    <div class="legacy-text appear-animation">
+                        <p>Dr. Stephen Hawking's life demonstrates the extraordinary potential of the human mind even when the muscular system fails. His ability to continue groundbreaking scientific work despite severe physical limitations has:</p>
+                        
+                        <ul class="legacy-list">
+                            <li class="legacy-item appear-animation">
+                                <i class="fas fa-lightbulb"></i>
+                                <div>
+                                    <h3>Inspired Technological Innovation</h3>
+                                    <p>The technologies developed to assist Hawking have benefited countless others with muscular and neurological conditions.</p>
+                                </div>
+                            </li>
+                            <li class="legacy-item appear-animation">
+                                <i class="fas fa-universal-access"></i>
+                                <div>
+                                    <h3>Advanced Accessibility</h3>
+                                    <p>His prominence helped advocate for greater accessibility in education, science, and public spaces.</p>
+                                </div>
+                            </li>
+                            <li class="legacy-item appear-animation">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h3>Challenged Perceptions</h3>
+                                    <p>Hawking challenged perceptions about physical disability and demonstrated that cognitive ability remains undiminished despite muscular deterioration.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="legacy-quote appear-animation">
+                        <blockquote>
+                            "Remember to look up at the stars and not down at your feet. Try to make sense of what you see and wonder about what makes the universe exist. Be curious. And however difficult life may seem, there is always something you can do and succeed at. It matters that you don't just give up."
+                            <cite>— Stephen Hawking</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Case Studies Section -->
+        <section class="case-studies-section">
+            <div class="section-title">
+                <h2>Additional Case Studies</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- FSHD Case Study -->
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>Facioscapulohumeral Muscular Dystrophy (FSHD)</h3>
+                    <div class="case-study-badges">
+                        <span class="badge">FSHD</span>
+                        <span class="badge">Genetic Disorder</span>
+                        <span class="badge">Muscle Weakness</span>
+                    </div>
+                </div>
+
+                <div class="case-study-content">
+                    <div class="patient-profile">
+                        <h4>Patient Profile</h4>
+                        <div class="profile-details">
+                            <p><strong>Name:</strong> John Doe (fictional name for privacy)</p>
+                            <p><strong>Age:</strong> 19 years</p>
+                            <p><strong>Gender:</strong> Male</p>
+                            <p><strong>Family History:</strong> Father and paternal grandfather had mild muscle weakness but were never formally diagnosed.</p>
+                            <p><strong>Medical History:</strong> No significant illnesses in childhood; played sports actively until age 15.</p>
+                        </div>
+                    </div>
+
+                    <div class="presenting-complaints">
+                        <h4>Presenting Complaints</h4>
+                        <ul>
+                            <li><strong>Facial Weakness:</strong> Difficulty smiling and closing his eyes fully while sleeping</li>
+                            <li><strong>Shoulder Weakness:</strong> Difficulty lifting arms above his head, trouble brushing hair, and noticeable scapular winging</li>
+                            <li><strong>Leg Weakness:</strong> Recently began experiencing difficulty climbing stairs and occasional tripping</li>
+                            <li><strong>Fatigue and Mild Lower Back Pain:</strong> Due to compensatory muscle use</li>
+                        </ul>
+                    </div>
+
+                    <div class="clinical-examination">
+                        <h4>Clinical Examination</h4>
+                        <ul>
+                            <li><strong>Facial Examination:</strong> Incomplete eye closure, reduced ability to puff cheeks, and a weak smile</li>
+                            <li><strong>Shoulders & Arms:</strong> Scapular winging, difficulty raising arms, and weakness in upper arm muscles</li>
+                            <li><strong>Lower Body:</strong> Mild weakness in hip flexors and quadriceps, with normal reflexes</li>
+                            <li><strong>Gait Analysis:</strong> Mildly altered due to weakness, but still able to walk independently</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagnostic-tests">
+                        <h4>Diagnostic Tests</h4>
+                        <ul>
+                            <li><strong>Genetic Testing:</strong> Confirmed a DUX4 gene mutation on chromosome 4, confirming FSHD</li>
+                            <li><strong>Electromyography (EMG):</strong> Showed myopathic changes, consistent with muscular dystrophy</li>
+                            <li><strong>Muscle MRI:</strong> Indicated muscle atrophy and fatty replacement, especially in the shoulders and thighs</li>
+                        </ul>
+                    </div>
+
+                    <div class="management-plan">
+                        <h4>Management Plan</h4>
+                        <ul>
+                            <li><strong>Physical Therapy:</strong> Strength training, stretching, and postural exercises to improve mobility</li>
+                            <li><strong>Bracing & Support:</strong> Shoulder braces recommended for better posture and movement</li>
+                            <li><strong>Pain Management:</strong> NSAIDs and occasional physiotherapy for lower back pain</li>
+                            <li><strong>Lifestyle Adjustments:</strong> Advised to avoid excessive exertion but maintain regular low-impact exercise</li>
+                            <li><strong>Regular Monitoring:</strong> Yearly check-ups to track muscle weakness and potential respiratory or cardiac involvement</li>
+                        </ul>
+                    </div>
+
+                    <div class="follow-up">
+                        <h4>Follow-up (After 22 Years)</h4>
+                        <ul>
+                            <li>Still ambulatory and independent, but with slightly more fatigue</li>
+                            <li>Increased shoulder weakness, but physical therapy has helped maintain function</li>
+                            <li>No significant respiratory or heart issues detected</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duchenne Muscular Dystrophy Case Study -->
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <h3>Duchenne Muscular Dystrophy (DMD)</h3>
+                    <div class="case-study-badges">
+                        <span class="badge">DMD</span>
+                        <span class="badge">X-linked Disorder</span>
+                        <span class="badge">Progressive Muscle Weakness</span>
+                    </div>
+                </div>
+
+                <div class="case-study-content">
+                    <div class="patient-profile">
+                        <h4>Patient Profile</h4>
+                        <div class="profile-details">
+                            <p><strong>Age:</strong> 12 years</p>
+                            <p><strong>Gender:</strong> Male</p>
+                            <p><strong>Family History:</strong> Maternal uncle died of the same illness at a young age</p>
+                        </div>
+                    </div>
+
+                    <div class="presenting-complaints">
+                        <h4>Presenting Complaints</h4>
+                        <ul>
+                            <li>Painful decayed tooth in the lower right jaw region</li>
+                            <li>Repeated falls</li>
+                            <li>Fatigue</li>
+                            <li>Muscle weakness</li>
+                            <li>Inability to climb stairs</li>
+                        </ul>
+                    </div>
+
+                    <div class="clinical-examination">
+                        <h4>Clinical Examination</h4>
+                        <ul>
+                            <li>Difficulty in standing, walking, and getting up from sitting position</li>
+                            <li>Proximal weakness</li>
+                            <li>Calf hypertrophy</li>
+                            <li>Hamstring muscle contracture</li>
+                            <li>Positive Gower's sign</li>
+                            <li>Anterior open bite</li>
+                            <li>Left posterior cross bite</li>
+                            <li>Enlarged tongue</li>
+                            <li>Crowding in lower anteriors</li>
+                            <li>Poor oral hygiene status</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagnostic-tests">
+                        <h4>Diagnostic Tests</h4>
+                        <ul>
+                            <li><strong>Serological Analysis:</strong>
+                                <ul>
+                                    <li>Creatine kinase (CK): 7342 U/L (elevated)</li>
+                                    <li>Lactate dehydrogenase: 595 μg/dl</li>
+                                    <li>Alanine transaminase: 124 U/L</li>
+                                </ul>
+                            </li>
+                            <li><strong>Electromyography:</strong> Myopathic pattern in right vastus lateralis</li>
+                            <li><strong>Muscle Biopsy:</strong> Positive for alpha, beta, gamma, delta-sarcoglycan and negative for DYS1, DY2, and DYS3</li>
+                        </ul>
+                    </div>
+
+                    <div class="management-plan">
+                        <h4>Management Plan</h4>
+                        <ul>
+                            <li>Consultation with pediatrician for general and physical health status</li>
+                            <li>Daily physiotherapy</li>
+                            <li>Steroid therapy</li>
+                            <li>Regular assessment for progressive muscle and cardiac/respiratory damage</li>
+                            <li>Dental therapy: pulpectomy and oral prophylaxis</li>
+                            <li>Periodic recall to prevent further dental complications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Model Section -->
+        <!-- ... existing code ... -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-dna"></i>
+                    <h3>Muscular System</h3>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links <span style="font-size: 0.9em; color: #ffa502;"></span> </h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="case-study.html">Case Study</a></li>
+                        <li><a href="additional-case-studies.html">More Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Useful Resources</h4>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Muscular_system?utm_source=chatgpt.com" target="_blank">Muscular System</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Human_anatomy?utm_source=chatgpt.com" target="_blank">Human Anatomy</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Medical_encyclopedia" target="_blank">Medical Encyclopedia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Muscular System HHS(Human Health System). All rights reserved.</p>
+                <p class="developer-credit">Developed by <span class="developer-name">Loel Britto</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/case-study.js"></script>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggleBtn" class="chatbot-toggle-btn">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbotContainer" class="custom-chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">Muscular System Assistant</div>
+            <div class="chatbot-controls">
+                <button class="chatbot-control-btn" id="minimizeBtn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="chatbot-control-btn" id="closeBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chatbot-iframe-container" id="chatbotIframeContainer">
+            <iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/30/06/20250330063504-UX23BT95.json" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+
+    <!-- Chatbot Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chatbot functionality
+            const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const minimizeBtn = document.getElementById('minimizeBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const iframeContainer = document.getElementById('chatbotIframeContainer');
+            
+            // Toggle chatbot visibility
+            chatbotToggleBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+                if (iframeContainer.classList.contains('chatbot-minimized')) {
+                    iframeContainer.classList.remove('chatbot-minimized');
+                }
+            });
+            
+            // Minimize chatbot
+            minimizeBtn.addEventListener('click', function() {
+                iframeContainer.classList.toggle('chatbot-minimized');
+            });
+            
+            // Close chatbot
+            closeBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = 'none';
+            });
+            
+            // Make chatbot draggable
+            const chatbotHeader = document.querySelector('.chatbot-header');
+            let isDragging = false;
+            let offsetX, offsetY;
+            
+            chatbotHeader.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                offsetX = e.clientX - chatbotContainer.getBoundingClientRect().left;
+                offsetY = e.clientY - chatbotContainer.getBoundingClientRect().top;
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    chatbotContainer.style.left = (e.clientX - offsetX) + 'px';
+                    chatbotContainer.style.top = (e.clientY - offsetY) + 'px';
+                    chatbotContainer.style.right = 'auto';
+                    chatbotContainer.style.bottom = 'auto';
+                }
+            });
+            
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            // Remove branding from iframe after it loads
+            const chatbotIframe = document.querySelector('.chatbot-iframe-container iframe');
+            chatbotIframe.addEventListener('load', function() {
+                try {
+                    const iframeDocument = chatbotIframe.contentDocument || chatbotIframe.contentWindow.document;
+                    const branding = iframeDocument.querySelector('.bp-widget__branding');
+                    if (branding) {
+                        branding.style.display = 'none';
+                    }
+                } catch (err) {
+                    console.log('Could not access iframe content due to same-origin policy');
+                }
+            });
+            
+            // Enhanced flip cards functionality
+            const flipCards = document.querySelectorAll('.flip-card-3d');
+            const isTouch = window.matchMedia('(hover: none)').matches;
+            
+            flipCards.forEach(card => {
+                // Handle click/tap events for flipping
+                card.addEventListener('click', function(e) {
+                    // If it's a touch device or a specific flip action
+                    if (isTouch || e.target.closest('.flip-card-front') || e.target.closest('.mt-4')) {
+                        this.classList.toggle('flipped');
+                        
+                        // Add tactile feedback on mobile
+                        if (isTouch) {
+                            this.style.transform = 'scale(0.98)';
+                            setTimeout(() => {
+                                this.style.transform = '';
+                            }, 100);
+                        }
+                    }
+                    // Prevent scrolling the page when interacting with scrollable content
+                    if (e.target.closest('.overflow-y-auto')) {
+                        e.stopPropagation();
+                    }
+                });
+                
+                // For hover devices, add shimmer effect on mouseover
+                if (!isTouch) {
+                    card.addEventListener('mouseenter', function() {
+                        const front = this.querySelector('.flip-card-front');
+                        if (front) {
+                            front.classList.add('shimmer-effect');
+                            setTimeout(() => {
+                                front.classList.remove('shimmer-effect');
+                            }, 1500);
+                        }
+                    });
+                }
+            });
+            
+            // Enable smooth scrolling within card content
+            document.querySelectorAll('.overflow-y-auto').forEach(scrollContainer => {
+                scrollContainer.addEventListener('wheel', function(e) {
+                    // Prevent the event from bubbling up
+                    e.stopPropagation();
+                    
+                    const delta = e.deltaY;
+                    // Smooth scroll with animation
+                    this.scrollBy({
+                        top: delta,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // For touch devices
+                let touchStartY = 0;
+                scrollContainer.addEventListener('touchstart', function(e) {
+                    touchStartY = e.touches[0].clientY;
+                    e.stopPropagation();
+                });
+                
+                scrollContainer.addEventListener('touchmove', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Animation for tech section background elements
+            const techSection = document.querySelector('.tech-solutions');
+            if (techSection) {
+                // Create floating elements randomly positioned
+                for (let i = 0; i < 5; i++) {
+                    const circuitEl = document.createElement('div');
+                    circuitEl.className = 'absolute w-4 h-4 bg-secondary opacity-5 rounded-full circuit-pattern';
+                    circuitEl.style.top = `${Math.random() * 100}%`;
+                    circuitEl.style.left = `${Math.random() * 100}%`;
+                    circuitEl.style.animationDelay = `${Math.random() * 5}s`;
+                    techSection.querySelector('.pointer-events-none').appendChild(circuitEl);
+                }
+                
+                // Add glass effect to some elements
+                const glassElements = techSection.querySelectorAll('.bg-white');
+                glassElements.forEach(el => {
+                    el.classList.remove('bg-white');
+                    el.classList.add('bg-glass');
+                });
+            }
+            
+            // Apply scroll reveal animations to sections
+            const revealElements = document.querySelectorAll('.appear-animation');
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+            
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html> 

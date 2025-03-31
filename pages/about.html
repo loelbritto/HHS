@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Muscular System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff4757',
+                        secondary: '#5352ed',
+                        accent: '#ffa502',
+                        dark: '#333',
+                        light: '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for About page */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.9) 0%, rgba(83, 82, 237, 0.9) 100%);
+            color: white;
+            padding: 100px 5% 50px;
+            text-align: center;
+        }
+
+       
+    
+
+     
+        .about-section {
+            padding: 80px 5%;
+        }
+
+        .about-section:nth-child(odd) {
+            background-color: white;
+        }
+
+        .about-section:nth-child(even) {
+            background-color: var(--background-color);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .two-column {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .image-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .muscle-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .muscle-type {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .muscle-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.1) 0%, rgba(83, 82, 237, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .muscle-type:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .muscle-type:hover::before {
+            opacity: 1;
+        }
+
+        .muscle-type-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .steps-container {
+            margin-top: 50px;
+        }
+
+        .step-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            flex-grow: 1;
+        }
+
+        .step-item::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background-color: var(--primary-color);
+            z-index: 0;
+        }
+
+        .step-item:last-child::after {
+            display: none;
+        }
+
+        .artificial-muscles {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .artificial-muscle-item {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .artificial-muscle-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .type-heading {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Styles for Scaffold Grid */
+        .scaffold-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .scaffold-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .scaffold-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+
+        .scaffold-item .image-container {
+            height: 250px;
+            overflow: hidden;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .scaffold-item .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .scaffold-item:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        .scaffold-item .approach-item {
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .two-column {
+                flex-direction: column;
+            }
+        }
+
+        
+      
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="animated-bg">
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="muscle-fiber"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="dna-strand"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+        <div class="cell-blob"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-dna"></i>
+            <span>Muscular System</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="case-study.html">Case Study</a>
+            <a href="additional-case-studies.html">More Studies</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>About the Muscular System</h1>
+        <p>Explore the complex network of tissues that power movement and maintain bodily functions</p>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Muscular System Overview 
+            
+            </h2>
+            <div class="two-column">
+                <div class="column">
+                    <p>The muscular system is a complex network of tissues responsible for movement, stability, and various bodily functions. Through contraction and relaxation, muscles enable us to move, maintain posture, circulate blood, and perform essential physiological processes.</p>
+                    <p>Muscles work in coordination with the skeletal and nervous systems to produce precise, controlled movements. They convert chemical energy into mechanical energy, allowing us to interact with our environment.</p>
+                    <p>Beyond movement, muscles play crucial roles in generating body heat, protecting internal organs, and facilitating circulation and digestion through their contractile properties.</p>
+                </div>
+                <div class="column">
+                    <div class="image-container">
+                        <img 
+                            src="../images/Muscular System Overview.jpeg" 
+                            data-src="../images/Muscular System Overview.jpeg, ./images/Muscular System Overview.jpeg, /images/Muscular System Overview.jpeg, /c:/Users/loelb/OneDrive/Desktop/net/images/Muscular System Overview.jpeg" 
+                            alt="Muscular System Overview" 
+                            onerror="
+                                if (!this.hasAttribute('failureCount')) {
+                                    this.setAttribute('failureCount', 1);
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    const index = parseInt(this.getAttribute('failureCount'));
+                                    if (index < paths.length) {
+                                        this.src = paths[index].trim();
+                                        this.setAttribute('failureCount', index + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Muscular+System+Overview';
+                                    }
+                                } else {
+                                    const count = parseInt(this.getAttribute('failureCount'));
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    if (count < paths.length) {
+                                        this.src = paths[count].trim();
+                                        this.setAttribute('failureCount', count + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Muscular+System+Overview';
+                                    }
+                                }
+                            "
+                            style="width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius);"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types of Muscles Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Types of Muscles</h2>
+            <p class="text-center">The human body contains three distinct types of muscle tissue, each with unique characteristics and functions:</p>
+            
+            <div class="muscle-types">
+                <div class="muscle-type">
+                    <div class="muscle-type-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Skeletal Muscles</h3>
+                    <p><strong>Location:</strong> Attached to bones via tendons</p>
+                    <p><strong>Control:</strong> Voluntary (conscious control)</p>
+                    <p><strong>Appearance:</strong> Striated (banded) appearance under microscope</p>
+                    <p><strong>Function:</strong> Responsible for body movement, posture maintenance, and heat generation</p>
+                    <p><strong>Example:</strong> Biceps, quadriceps, abdominal muscles</p>
+                </div>
+                
+                <div class="muscle-type">
+                    <div class="muscle-type-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiac Muscles</h3>
+                    <p><strong>Location:</strong> Found only in the heart</p>
+                    <p><strong>Control:</strong> Involuntary (autonomous)</p>
+                    <p><strong>Appearance:</strong> Striated with intercalated discs for electrical coupling</p>
+                    <p><strong>Function:</strong> Pumps blood throughout the body, maintains circulation</p>
+                    <p><strong>Feature:</strong> Has unique ability to contract rhythmically without nervous input</p>
+                </div>
+                
+                <div class="muscle-type">
+                    <div class="muscle-type-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Smooth Muscles</h3>
+                    <p><strong>Location:</strong> Walls of hollow organs and blood vessels</p>
+                    <p><strong>Control:</strong> Involuntary (controlled by autonomic nervous system)</p>
+                    <p><strong>Appearance:</strong> Non-striated, smooth appearance</p>
+                    <p><strong>Function:</strong> Controls internal organ functions like digestion, blood flow regulation</p>
+                    <p><strong>Example:</strong> Muscles in digestive tract, bladder, blood vessels</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muscle Mechanism in Scaffolding Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Muscle Mechanism in Scaffolding</h2>
+            <p>The muscle mechanism in scaffolding refers to the process by which muscle cells (myocytes) interact with scaffolding materials to promote tissue regeneration and repair. This innovative approach combines cellular biology with bioengineering to create functional muscle tissue.</p>
+            
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Scaffold Design and Fabrication</h3>
+                        <p>Biocompatible materials such as collagen, alginate, or synthetic polymers are selected to support muscle cell growth and differentiation. The scaffold provides a structural framework that mimics the natural extracellular matrix (ECM) environment.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Muscle Cell Isolation and Seeding</h3>
+                        <p>Muscle cells (myoblasts or satellite cells) are isolated from muscle tissue or other sources. These cells are then expanded and proliferated in vitro before being seeded onto the scaffold structure.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Muscle Cell Differentiation and Maturation</h3>
+                        <p>Growth factors, hormones, or other biochemical cues induce muscle cell differentiation into myotubes. These myotubes then mature into functional muscle fibers that can contract and generate force.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Scaffold-Mediated Muscle Tissue Formation</h3>
+                        <p>The muscle cells interact with the scaffold, promoting cell adhesion, proliferation, and differentiation. This process leads to the formation of a functional muscle tissue-like structure on the scaffold.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>In Vivo Implantation and Integration</h3>
+                        <p>The muscle scaffold is implanted into the desired location in vivo, where it integrates with the surrounding tissue. This approach has promising applications in treating muscle injuries, degenerative diseases, and congenital muscle defects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muscle Cells as Scaffold Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Muscle Cells as Scaffold</h2>
+            <div class="scaffold-grid">
+                <div class="scaffold-item">
+                    <div class="image-container">
+                        <img 
+                            src="../images/Decellularization of Muscle Tissue.jpg" 
+                            data-src="../images/Decellularization of Muscle Tissue.jpg, ./images/Decellularization of Muscle Tissue.jpg, /images/Decellularization of Muscle Tissue.jpg, /c:/Users/loelb/OneDrive/Desktop/net/images/Decellularization of Muscle Tissue.jpg" 
+                            alt="Decellularization of Muscle Tissue" 
+                            onerror="
+                                if (!this.hasAttribute('failureCount')) {
+                                    this.setAttribute('failureCount', 1);
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    const index = parseInt(this.getAttribute('failureCount'));
+                                    if (index < paths.length) {
+                                        this.src = paths[index].trim();
+                                        this.setAttribute('failureCount', index + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Decellularization+of+Muscle+Tissue';
+                                    }
+                                } else {
+                                    const count = parseInt(this.getAttribute('failureCount'));
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    if (count < paths.length) {
+                                        this.src = paths[count].trim();
+                                        this.setAttribute('failureCount', count + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Decellularization+of+Muscle+Tissue';
+                                    }
+                                }
+                            "
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        >
+                    </div>
+                    <div class="approach-item">
+                        <h3 class="type-heading">A) Decellularization of Muscle Tissue</h3>
+                        <p>Decellularization involves removing all cellular components from muscle tissue while preserving the ECM. The resulting scaffold retains the natural structure and biochemical cues that support cell adhesion and differentiation.</p>
+                        <p><strong>Applications:</strong> Muscle regeneration, tendon repair, and cardiac tissue engineering.</p>
+                    </div>
+                </div>
+                
+                <div class="scaffold-item">
+                    <div class="image-container">
+                        <img 
+                            src="../images/3D Bioprinting with Muscle Cells.png" 
+                            data-src="../images/3D Bioprinting with Muscle Cells.png, ./images/3D Bioprinting with Muscle Cells.png, /images/3D Bioprinting with Muscle Cells.png, /c:/Users/loelb/OneDrive/Desktop/net/images/3D Bioprinting with Muscle Cells.png" 
+                            alt="3D Bioprinting with Muscle Cells" 
+                            onerror="
+                                if (!this.hasAttribute('failureCount')) {
+                                    this.setAttribute('failureCount', 1);
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    const index = parseInt(this.getAttribute('failureCount'));
+                                    if (index < paths.length) {
+                                        this.src = paths[index].trim();
+                                        this.setAttribute('failureCount', index + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=3D+Bioprinting+with+Muscle+Cells';
+                                    }
+                                } else {
+                                    const count = parseInt(this.getAttribute('failureCount'));
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    if (count < paths.length) {
+                                        this.src = paths[count].trim();
+                                        this.setAttribute('failureCount', count + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=3D+Bioprinting+with+Muscle+Cells';
+                                    }
+                                }
+                            "
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        >
+                    </div>
+                    <div class="approach-item">
+                        <h3 class="type-heading">B) 3D Bioprinting with Muscle Cells</h3>
+                        <p>3D bioprinting involves using muscle cells or muscle-derived ECM as bio-inks to create scaffolds with controlled architecture.</p>
+                        <p><strong>Applications:</strong> Personalized muscle grafts, organoid development, and functional tissue implants.</p>
+                    </div>
+                </div>
+                
+                <div class="scaffold-item">
+                    <div class="image-container">
+                        <img 
+                            src="../images/Muscle-Derived ECM Hydrogels.png" 
+                            data-src="../images/Muscle-Derived ECM Hydrogels.png, ./images/Muscle-Derived ECM Hydrogels.png, /images/Muscle-Derived ECM Hydrogels.png, /c:/Users/loelb/OneDrive/Desktop/net/images/Muscle-Derived ECM Hydrogels.png" 
+                            alt="Muscle-Derived ECM Hydrogels" 
+                            onerror="
+                                if (!this.hasAttribute('failureCount')) {
+                                    this.setAttribute('failureCount', 1);
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    const index = parseInt(this.getAttribute('failureCount'));
+                                    if (index < paths.length) {
+                                        this.src = paths[index].trim();
+                                        this.setAttribute('failureCount', index + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Muscle-Derived+ECM+Hydrogels';
+                                    }
+                                } else {
+                                    const count = parseInt(this.getAttribute('failureCount'));
+                                    const paths = this.getAttribute('data-src').split(',');
+                                    if (count < paths.length) {
+                                        this.src = paths[count].trim();
+                                        this.setAttribute('failureCount', count + 1);
+                                    } else {
+                                        this.src='https://via.placeholder.com/600x400?text=Muscle-Derived+ECM+Hydrogels';
+                                    }
+                                }
+                            "
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        >
+                    </div>
+                    <div class="approach-item">
+                        <h3 class="type-heading">C) Muscle-Derived ECM Hydrogels</h3>
+                        <p>Muscle-derived ECM hydrogels are injectable, biodegradable biomaterials created by processing muscle extracellular matrix (ECM) into a solubilized form. When injected, they can self-assemble into a gel-like structure at body temperature, providing a natural microenvironment for cellular regeneration.</p>
+                        <p><strong>Applications:</strong> Soft tissue repair, wound healing, and muscle regeneration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artificial Muscles Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Artificial Muscles: Revolutionizing Movement</h2>
+            <p>Artificial muscles are materials or devices that mimic the function of natural muscles by contracting, expanding, or rotating in response to external stimuli. They can be activated by electrical, thermal, pneumatic, or chemical signals and have applications in robotics, prosthetics, medical devices, and soft actuators.</p>
+            
+            <div class="artificial-muscles">
+                <div class="artificial-muscle-item">
+                    <h3 class="type-heading">Electroactive Polymers (EAPs)</h3>
+                    <p><strong>Mechanism:</strong> Respond to electrical signals by changing shape</p>
+                    <p><strong>Advantages:</strong> Lightweight, flexible, low power requirements</p>
+                    <p><strong>Applications:</strong> Soft robotics, artificial limbs, haptic feedback devices</p>
+                </div>
+                
+                <div class="artificial-muscle-item">
+                    <h3 class="type-heading">Shape Memory Alloys (SMAs)</h3>
+                    <p><strong>Mechanism:</strong> Change shape in response to temperature changes</p>
+                    <p><strong>Advantages:</strong> High force generation, reliable operation</p>
+                    <p><strong>Applications:</strong> Robotic joints, medical stents, automotive actuators</p>
+                </div>
+                
+                <div class="artificial-muscle-item">
+                    <h3 class="type-heading">Pneumatic Artificial Muscles (PAMs)</h3>
+                    <p><strong>Mechanism:</strong> Expand and contract with air pressure changes</p>
+                    <p><strong>Advantages:</strong> High power-to-weight ratio, compliant behavior</p>
+                    <p><strong>Applications:</strong> Exoskeletons, rehabilitation devices, industrial robots</p>
+                </div>
+                
+                <div class="artificial-muscle-item">
+                    <h3 class="type-heading">Hydrogel-based Muscles</h3>
+                    <p><strong>Mechanism:</strong> Swell or shrink in response to chemical or environmental changes</p>
+                    <p><strong>Advantages:</strong> Biocompatible, responsive to multiple stimuli</p>
+                    <p><strong>Applications:</strong> Drug delivery systems, soft actuators, biomimetic devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-dna"></i>
+                <h3>Muscular System</h3>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links <span style="font-size: 0.9em; color: #ffa502;"> </h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="case-study.html">Case Study</a></li>
+                    <li><a href="additional-case-studies.html">More Studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Useful Resources</h4>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Muscular_system?utm_source=chatgpt.com" target="_blank">Muscular System</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Human_anatomy?utm_source=chatgpt.com" target="_blank">Human Anatomy</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Medical_encyclopedia" target="_blank">Medical Encyclopedia</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Muscular System HHS(Human Health System). All rights reserved.</p>
+            <p class="developer-credit">Developed by <span class="developer-name">Loel Britto</span></p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggleBtn" class="chatbot-toggle-btn">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbotContainer" class="custom-chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-title">Muscular System Assistant</div>
+            <div class="chatbot-controls">
+                <button class="chatbot-control-btn" id="minimizeBtn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="chatbot-control-btn" id="closeBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chatbot-iframe-container" id="chatbotIframeContainer">
+            <iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/30/06/20250330063504-UX23BT95.json" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+
+    <!-- Chatbot Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const minimizeBtn = document.getElementById('minimizeBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const iframeContainer = document.getElementById('chatbotIframeContainer');
+            
+            // Toggle chatbot visibility
+            chatbotToggleBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+                if (iframeContainer.classList.contains('chatbot-minimized')) {
+                    iframeContainer.classList.remove('chatbot-minimized');
+                }
+            });
+            
+            // Minimize chatbot
+            minimizeBtn.addEventListener('click', function() {
+                iframeContainer.classList.toggle('chatbot-minimized');
+            });
+            
+            // Close chatbot
+            closeBtn.addEventListener('click', function() {
+                chatbotContainer.style.display = 'none';
+            });
+            
+            // Make chatbot draggable
+            const chatbotHeader = document.querySelector('.chatbot-header');
+            let isDragging = false;
+            let offsetX, offsetY;
+            
+            chatbotHeader.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                offsetX = e.clientX - chatbotContainer.getBoundingClientRect().left;
+                offsetY = e.clientY - chatbotContainer.getBoundingClientRect().top;
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    chatbotContainer.style.left = (e.clientX - offsetX) + 'px';
+                    chatbotContainer.style.top = (e.clientY - offsetY) + 'px';
+                    chatbotContainer.style.right = 'auto';
+                    chatbotContainer.style.bottom = 'auto';
+                }
+            });
+            
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            // Remove branding from iframe after it loads
+            const chatbotIframe = document.querySelector('.chatbot-iframe-container iframe');
+            chatbotIframe.addEventListener('load', function() {
+                try {
+                    const iframeDocument = chatbotIframe.contentDocument || chatbotIframe.contentWindow.document;
+                    const branding = iframeDocument.querySelector('.bp-widget__branding');
+                    if (branding) {
+                        branding.style.display = 'none';
+                    }
+                } catch (err) {
+                    console.log('Could not access iframe content due to same-origin policy');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+    
